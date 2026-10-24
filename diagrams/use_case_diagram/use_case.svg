@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="1630" viewBox="0 0 1040 1630" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="open" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#555555" stroke-width="1.4"/>
+    </marker>
+  </defs>
+  <rect width="1040" height="1630" fill="#FFFFFF"/>
+  <text x="520.0" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#222222">Use Case Diagram: Smart Parking</text>
+  <text x="520.0" y="64" text-anchor="middle" font-size="13" fill="#666666">UML · actors and use cases UC-01 to UC-18 from docs/06-architecture/architecture.md, Section 4</text>
+  <rect x="230" y="92" width="630" height="1368" fill="#FFFFFF" stroke="#333333" stroke-width="1.5"/>
+  <text x="245" y="116" font-size="16" font-weight="bold" fill="#222222">Smart Parking system</text>
+  <g stroke="#444444" stroke-width="1.3">
+    <line x1="124" y1="260" x2="280" y2="160"/>
+    <line x1="124" y1="260" x2="280" y2="235"/>
+    <line x1="124" y1="260" x2="280" y2="310"/>
+    <line x1="124" y1="260" x2="280" y2="385"/>
+    <line x1="124" y1="740" x2="280" y2="490"/>
+    <line x1="124" y1="740" x2="280" y2="565"/>
+    <line x1="124" y1="740" x2="280" y2="640"/>
+    <line x1="124" y1="740" x2="280" y2="715"/>
+    <line x1="124" y1="740" x2="280" y2="790"/>
+    <line x1="124" y1="740" x2="280" y2="865"/>
+    <line x1="124" y1="740" x2="280" y2="940"/>
+    <line x1="124" y1="740" x2="280" y2="1015"/>
+    <line x1="124" y1="1115" x2="280" y2="1015"/>
+    <line x1="124" y1="1115" x2="280" y2="1090"/>
+    <line x1="124" y1="1115" x2="280" y2="1165"/>
+    <line x1="124" y1="1115" x2="280" y2="1240"/>
+    <line x1="124" y1="1370" x2="280" y2="1345"/>
+    <line x1="124" y1="1370" x2="280" y2="1420"/>
+    <line x1="926" y1="1333" x2="520" y2="1345"/>
+  </g>
+  <g stroke="#555555" stroke-width="1.3" stroke-dasharray="6 4" fill="none" marker-end="url(#open)">
+    <line x1="520" y1="565" x2="685.8" y2="873.8"/>
+    <line x1="520" y1="640" x2="649.3" y2="880.8"/>
+    <line x1="520" y1="715" x2="626.0" y2="891.7"/>
+    <line x1="520" y1="1090" x2="626.0" y2="912.3"/>
+    <line x1="520" y1="1165" x2="649.3" y2="923.2"/>
+    <line x1="520" y1="1240" x2="685.8" y2="930.2"/>
+    <path d="M520,385 C600,385 600,160 522,160"/>
+  </g>
+  <g font-size="12" font-style="italic" fill="#444444" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">
+    <text x="602.9" y="723.4">«include»</text>
+    <text x="584.6" y="764.4">«include»</text>
+    <text x="573.0" y="807.4">«include»</text>
+    <text x="573.0" y="1005.1">«include»</text>
+    <text x="584.6" y="1048.1">«include»</text>
+    <text x="602.9" y="1089.1">«include»</text>
+  </g>
+  <text x="592" y="270.5" font-size="12" font-style="italic" fill="#444444">«extend»</text>
+  <text x="592" y="287.5" font-size="12" fill="#444444">[space is closed]</text>
+  <ellipse cx="400" cy="160" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="157" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-01 View parking map</text>
+  <text x="400" y="173" text-anchor="middle" font-size="13" fill="#1A1A1A">with space states</text>
+  <ellipse cx="400" cy="235" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="232" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-02 Receive</text>
+  <text x="400" y="248" text-anchor="middle" font-size="13" fill="#1A1A1A">live updates</text>
+  <ellipse cx="400" cy="310" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="307" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-03 See Unknown state</text>
+  <text x="400" y="323" text-anchor="middle" font-size="13" fill="#1A1A1A">and area warning</text>
+  <ellipse cx="400" cy="385" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="382" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-04 See</text>
+  <text x="400" y="398" text-anchor="middle" font-size="13" fill="#1A1A1A">closure reason</text>
+  <ellipse cx="400" cy="490" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="487" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-06 Monitor live state</text>
+  <text x="400" y="503" text-anchor="middle" font-size="13" fill="#1A1A1A">and freshness</text>
+  <ellipse cx="400" cy="565" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="562" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-07 Close</text>
+  <text x="400" y="578" text-anchor="middle" font-size="13" fill="#1A1A1A">space or area</text>
+  <ellipse cx="400" cy="640" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="645" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-08 Remove closure</text>
+  <ellipse cx="400" cy="715" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="712" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-09 Correct</text>
+  <text x="400" y="728" text-anchor="middle" font-size="13" fill="#1A1A1A">detected state</text>
+  <ellipse cx="400" cy="790" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="795" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-10 View audit log</text>
+  <ellipse cx="400" cy="865" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="862" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-11 View</text>
+  <text x="400" y="878" text-anchor="middle" font-size="13" fill="#1A1A1A">quality report</text>
+  <ellipse cx="400" cy="940" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="937" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-12 View</text>
+  <text x="400" y="953" text-anchor="middle" font-size="13" fill="#1A1A1A">space history</text>
+  <ellipse cx="400" cy="1015" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="1020" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-05 Log in / log out</text>
+  <ellipse cx="400" cy="1090" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="1087" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-13 Manage operators</text>
+  <text x="400" y="1103" text-anchor="middle" font-size="13" fill="#1A1A1A">and area assignment</text>
+  <ellipse cx="400" cy="1165" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="1162" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-14 Configure layout</text>
+  <text x="400" y="1178" text-anchor="middle" font-size="13" fill="#1A1A1A">and calibrate spaces</text>
+  <ellipse cx="400" cy="1240" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="1237" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-15 Register</text>
+  <text x="400" y="1253" text-anchor="middle" font-size="13" fill="#1A1A1A">edge device</text>
+  <ellipse cx="400" cy="1345" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="1342" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-16 Detect</text>
+  <text x="400" y="1358" text-anchor="middle" font-size="13" fill="#1A1A1A">space states</text>
+  <ellipse cx="400" cy="1420" rx="120" ry="28" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="400" y="1417" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-17 Mark stale data</text>
+  <text x="400" y="1433" text-anchor="middle" font-size="13" fill="#1A1A1A">as Unknown</text>
+  <ellipse cx="720" cy="902" rx="100" ry="30" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="720" y="899" text-anchor="middle" font-size="13" fill="#1A1A1A">UC-18 Record</text>
+  <text x="720" y="915" text-anchor="middle" font-size="13" fill="#1A1A1A">audit entry</text>
+  <g stroke="#08427B" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="100" cy="234" r="13" fill="#FFFFFF"/>
+    <line x1="100" y1="247" x2="100" y2="282"/>
+    <line x1="80" y1="260" x2="120" y2="260"/>
+    <line x1="100" y1="282" x2="84" y2="308"/>
+    <line x1="100" y1="282" x2="116" y2="308"/>
+  </g>
+  <text x="100" y="330" text-anchor="middle" font-size="14" font-weight="bold" fill="#222222">Driver</text>
+  <g stroke="#08427B" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="100" cy="714" r="13" fill="#FFFFFF"/>
+    <line x1="100" y1="727" x2="100" y2="762"/>
+    <line x1="80" y1="740" x2="120" y2="740"/>
+    <line x1="100" y1="762" x2="84" y2="788"/>
+    <line x1="100" y1="762" x2="116" y2="788"/>
+  </g>
+  <text x="100" y="810" text-anchor="middle" font-size="14" font-weight="bold" fill="#222222">Parking</text>
+  <text x="100" y="827" text-anchor="middle" font-size="14" font-weight="bold" fill="#222222">operator</text>
+  <g stroke="#08427B" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="100" cy="1089" r="13" fill="#FFFFFF"/>
+    <line x1="100" y1="1102" x2="100" y2="1137"/>
+    <line x1="80" y1="1115" x2="120" y2="1115"/>
+    <line x1="100" y1="1137" x2="84" y2="1163"/>
+    <line x1="100" y1="1137" x2="116" y2="1163"/>
+  </g>
+  <text x="100" y="1185" text-anchor="middle" font-size="14" font-weight="bold" fill="#222222">Administrator</text>
+  <g stroke="#08427B" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="100" cy="1344" r="13" fill="#FFFFFF"/>
+    <line x1="100" y1="1357" x2="100" y2="1392"/>
+    <line x1="80" y1="1370" x2="120" y2="1370"/>
+    <line x1="100" y1="1392" x2="84" y2="1418"/>
+    <line x1="100" y1="1392" x2="116" y2="1418"/>
+  </g>
+  <text x="100" y="1440" text-anchor="middle" font-size="14" font-weight="bold" fill="#222222">Timer</text>
+  <g stroke="#08427B" stroke-width="2" fill="none" stroke-linecap="round">
+    <circle cx="950" cy="1307" r="13" fill="#FFFFFF"/>
+    <line x1="950" y1="1320" x2="950" y2="1355"/>
+    <line x1="930" y1="1333" x2="970" y2="1333"/>
+    <line x1="950" y1="1355" x2="934" y2="1381"/>
+    <line x1="950" y1="1355" x2="966" y2="1381"/>
+  </g>
+  <text x="950" y="1403" text-anchor="middle" font-size="14" font-weight="bold" fill="#222222">Partner camera</text>
+  <text x="950" y="1420" text-anchor="middle" font-size="12" font-weight="normal" fill="#222222">(secondary)</text>
+  <path d="M80,1485 H944 L960,1501 V1567 H80 Z" fill="#FFFBE6" stroke="#B8A44C" stroke-width="1.2"/>
+  <path d="M944,1485 V1501 H960" fill="none" stroke="#B8A44C" stroke-width="1.2"/>
+  <text x="96" y="1509" font-size="12.5" fill="#333333">Login (UC-05) is a precondition for every other operator and administrator use case.</text>
+  <text x="96" y="1529" font-size="12.5" fill="#333333">UC-18 is included in every use case that changes data, so the audit entry cannot be skipped.</text>
+  <text x="96" y="1549" font-size="12.5" fill="#333333">Timer starts UC-16 and UC-17 on a schedule; Partner camera is a secondary actor that supplies images.</text>
+  <g font-size="12" fill="#444444">
+    <line x1="250" y1="1599" x2="295" y2="1599" stroke="#444444" stroke-width="1.3"/>
+    <text x="303" y="1603">Association (actor takes part)</text>
+    <line x1="520" y1="1599" x2="565" y2="1599" stroke="#555555" stroke-width="1.3" stroke-dasharray="6 4" marker-end="url(#open)"/>
+    <text x="573" y="1603">«include» / «extend» dependency</text>
+  </g>
+</svg>
