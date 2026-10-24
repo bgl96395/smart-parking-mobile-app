@@ -1,211 +1,210 @@
 # Smart Parking
 
-Сервис бронирования парковочных мест у бизнес-центров Астаны с въездом по госномеру.
+A service for booking parking spaces near business centers in Astana, with entry by license plate.
 
-> Забронируйте парковку возле цели поездки и въезжайте по госномеру — с понятной ценой и условиями заранее.
+> Book parking near your destination and drive in by license plate, with the price and terms clear in advance.
 
-**Статус:** подготовка к пилоту на одном партнёрском бизнес-центре.
-
----
-
-## Содержание
-
-- [Проблема](#проблема)
-- [Для кого](#для-кого)
-- [Решение](#решение)
-- [Функциональность MVP](#функциональность-mvp)
-- [Как работает въезд по брони](#как-работает-въезд-по-брони)
-- [Статусы парковочной зоны](#статусы-парковочной-зоны)
-- [Архитектура](#архитектура)
-- [Бизнес-модель](#бизнес-модель)
-- [Метрики пилота](#метрики-пилота)
-- [Риски и открытые вопросы](#риски-и-открытые-вопросы)
-- [Дорожная карта](#дорожная-карта)
-- [Команда](#команда)
-- [Работа с репозиторием](#работа-с-репозиторием)
+**Status:** preparing a pilot at one partner business center.
 
 ---
 
-## Проблема
+## Contents
 
-**Водителям** сложно заранее понять, найдётся ли место возле нужного здания. Данные о свободных местах устаревают, а поиск въезда и самого места отнимает время.
+- [Problem](#problem)
+- [Who it's for](#who-its-for)
+- [Solution](#solution)
+- [MVP features](#mvp-features)
+- [How booked entry works](#how-booked-entry-works)
+- [Parking zone statuses](#parking-zone-statuses)
+- [Architecture](#architecture)
+- [Business model](#business-model)
+- [Pilot metrics](#pilot-metrics)
+- [Risks and open questions](#risks-and-open-questions)
+- [Roadmap](#roadmap)
+- [Team](#team)
+- [Working with the repository](#working-with-the-repository)
 
-**Владельцам парковок** нужно совмещать бронирования с обычными заездами, контролировать доступ и учитывать временные закрытия: уборку снега, ремонт, технические сбои.
+---
 
-**Что используют сейчас:** 2ГИС и Яндекс Карты, городской парковочный сервис, приезд наудачу, звонок охране, абонементы, локальные системы управления парковкой.
+## Problem
 
-## Для кого
+**Drivers** find it hard to know in advance whether there will be a space near the building they need. Availability data goes stale, and finding the entrance and the space itself takes time.
 
-| Сегмент | Кто это | Что получает |
+**Parking owners** need to balance bookings with regular drive-ins, control access, and handle temporary closures: snow removal, repairs, technical failures.
+
+**What people use today:** 2GIS and Yandex Maps, the city parking service, showing up and hoping for the best, calling security, monthly passes, on-site parking management systems.
+
+## Who it's for
+
+| Segment | Who | What they get |
 |---|---|---|
-| Водители | Посетители и сотрудники бизнес-центров, которым нужно припарковаться у здания к определённому времени | Гарантированное место, точный въезд, итоговая цена до оплаты |
-| Партнёры | Владельцы и управляющие БЦ, операторы парковок | Продажа свободной квоты, управление гостевым доступом, контроль броней |
+| Drivers | Visitors and employees of business centers who need to park at a specific building by a specific time | A guaranteed space, the exact entrance, the final price before payment |
+| Partners | Business center owners and managers, parking operators | Revenue from unused quota, guest access management, booking control |
 
-**Первые пользователи:** арендаторы, сотрудники и посетители одного партнёрского бизнес-центра. На пилоте со стороны парковки работает ответственный представитель.
+**Early adopters:** tenants, employees and visitors of one partner business center. During the pilot, a designated representative works on the parking side.
 
-## Решение
+## Solution
 
-- Карта парковок с выбором времени и **полной стоимостью** до оплаты.
-- Бронь из **квоты, выделенной партнёром**, а не из всей парковки.
-- Подробности объекта: точный въезд, пешеходный выход, ограничение по высоте, крытая или отапливаемая парковка.
-- **Въезд по госномеру:** камера считывает номер, система проверяет бронь и открывает шлагбаум.
-- **Честные данные:** у каждого статуса указаны источник и время обновления. Если занятость неизвестна, так и пишем.
-- **Кабинет оператора:** квота, закрытия, брони, ручные исправления с указанием причины, журнал въездов и выездов.
+- A parking map with time selection and the **full price** shown before payment.
+- Bookings come from a **quota allocated by the partner**, not from the whole lot.
+- Facility details: exact entrance, pedestrian exit, height limit, covered or heated parking.
+- **Entry by license plate:** a camera reads the plate, the system checks the booking and opens the barrier.
+- **Honest data:** every status shows its source and last update time. If occupancy is unknown, we say so.
+- **Operator dashboard:** quota, closures, bookings, manual corrections with a stated reason, entry and exit log.
 
-## Функциональность MVP
+## MVP features
 
-### Водитель
+### Driver
 
-- [ ] Регистрация и вход
-- [ ] Добавление автомобиля (госномер)
-- [ ] Карта и список парковок с карточкой объекта
-- [ ] Выбор интервала времени, расчёт итоговой стоимости
-- [ ] Бронирование и оплата
-- [ ] Отмена брони по правилам объекта, возврат
-- [ ] Уведомления о брони, изменениях и закрытиях
-- [ ] История бронирований
+- [ ] Sign up and log in
+- [ ] Add a vehicle (license plate)
+- [ ] Map and list of parking lots with a facility card
+- [ ] Time slot selection, final price calculation
+- [ ] Booking and payment
+- [ ] Cancellation under the facility's rules, refunds
+- [ ] Notifications about bookings, changes and closures
+- [ ] Booking history
 
-### Оператор парковки
+### Parking operator
 
-- [ ] Управление квотой мест для бронирования
-- [ ] Временные закрытия (полные и частичные) с причиной
-- [ ] Список броней и их статусы
-- [ ] Ручное подтверждение въезда при сбое камеры или шлагбаума
-- [ ] Ручная корректировка статуса зоны с обязательной причиной
-- [ ] Журнал въездов и выездов
+- [ ] Manage the quota of bookable spaces
+- [ ] Temporary closures (full and partial) with a reason
+- [ ] List of bookings and their statuses
+- [ ] Manual entry confirmation when the camera or barrier fails
+- [ ] Manual zone status correction with a required reason
+- [ ] Entry and exit log
 
-### Платформа
+### Platform
 
-- [ ] Интеграция с системой доступа (камера / шлагбаум) партнёра
-- [ ] Учёт подтверждённых будущих броней отдельно от текущей занятости
-- [ ] Хранение истории событий для аудита и метрик
+- [ ] Integration with the partner's access system (camera / barrier)
+- [ ] Track confirmed future bookings separately from current occupancy
+- [ ] Store event history for auditing and metrics
 
-## Как работает въезд по брони
+## How booked entry works
 
 ```
-Водитель                Платформа                 Объект (камера + шлагбаум)
-   |  бронь + госномер      |                                |
+Driver                  Platform                  Facility (camera + barrier)
+   |  booking + plate       |                                |
    |----------------------->|                                |
-   |  подтверждение, цена   |                                |
+   |  confirmation, price   |                                |
    |<-----------------------|                                |
-   |                        |      номер считан на въезде    |
+   |                        |      plate read at entrance    |
    |                        |<-------------------------------|
-   |                        |  проверка: есть действующая    |
-   |                        |  бронь на этот номер и время?  |
+   |                        |  check: is there a valid       |
+   |                        |  booking for this plate/time?  |
    |                        |------------------------------->|
-   |                        |   да → открыть шлагбаум         |
-   |                        |   нет / сбой → оператор         |
+   |                        |   yes → open barrier           |
+   |                        |   no / failure → operator      |
 ```
 
-**Резервный сценарий:** если номер не распознан или интеграция недоступна, оператор находит бронь и подтверждает въезд вручную. Событие попадает в журнал с пометкой «ручной въезд».
+**Fallback:** if the plate isn't recognized or the integration is down, the operator looks up the booking and confirms entry manually. The event is logged as a "manual entry".
 
-## Статусы парковочной зоны
+## Parking zone statuses
 
-| Статус | Значение |
+| Status | Meaning |
 |---|---|
-| Места есть | По актуальным данным есть свободные места |
-| Мест нет | По актуальным данным свободных мест нет |
-| Закрыта | Оператор закрыл зону (снег, ремонт, сбой) |
-| Неизвестно | Данных нет или они устарели |
+| Spaces available | Current data shows free spaces |
+| Full | Current data shows no free spaces |
+| Closed | The operator closed the zone (snow, repairs, failure) |
+| Unknown | No data, or the data is stale |
 
-Рядом со статусом всегда показываются **источник** (датчик / камера / оператор) и **время обновления**. Если данные старше допустимого порога, статус автоматически становится «Неизвестно».
+Each status always shows its **source** (sensor / camera / operator) and **last update time**. If the data is older than the allowed threshold, the status automatically switches to "Unknown".
 
-## Архитектура
+## Architecture
 
-> Черновик, будет уточняться по ходу разработки. Технологический стек ещё не зафиксирован.
+> Draft, to be refined during development. The tech stack is not decided yet.
 
 ```
 ┌──────────────────┐   ┌──────────────────┐
-│ Мобильное        │   │ Кабинет          │
-│ приложение       │   │ оператора (web)  │
+│ Mobile           │   │ Operator         │
+│ app              │   │ dashboard (web)  │
 └────────┬─────────┘   └────────┬─────────┘
          │        HTTPS / API   │
          └──────────┬───────────┘
             ┌───────▼────────┐
-            │  Backend API   │── платёжный провайдер
-            │                │── уведомления (push / SMS)
-            │                │── карты
+            │  Backend API   │── payment provider
+            │                │── notifications (push / SMS)
+            │                │── maps
             └───┬────────┬───┘
                 │        │
         ┌───────▼──┐  ┌──▼─────────────────┐
-        │   БД     │  │ Шлюз интеграции    │
-        │ (брони,  │  │ с системой доступа │
-        │  журнал) │  │ (камера, шлагбаум) │
+        │ Database │  │ Access system      │
+        │(bookings,│  │ integration gateway│
+        │  log)    │  │ (camera, barrier)  │
         └──────────┘  └────────────────────┘
                 │
         ┌───────▼──────────────┐
-        │ ML-модули            │
-        │ (распознавание       │
-        │  номеров, прогноз    │
-        │  занятости, качество │
-        │  данных)             │
+        │ ML modules           │
+        │ (plate recognition,  │
+        │  occupancy forecast, │
+        │  data quality)       │
         └──────────────────────┘
 ```
 
-**Основные модули бэкенда:**
+**Core backend modules:**
 
-- **Пользователи и автомобили:** аккаунты, госномера.
-- **Объекты:** парковки, зоны, въезды, характеристики, тарифы.
-- **Квоты и доступность:** выделенные под бронь места, закрытия, проверка пересечений.
-- **Бронирования:** жизненный цикл брони (создана → оплачена → исполнена / отменена / неявка).
-- **Платежи:** оплата, возвраты, компенсации.
-- **Доступ:** приём событий с камер, проверка брони, команда на открытие, ручное подтверждение.
-- **Статусы и данные:** текущее состояние зон, источник, время обновления, правило устаревания.
-- **Аудит:** журнал въездов и выездов, ручных действий оператора с причинами.
+- **Users and vehicles:** accounts, license plates.
+- **Facilities:** parking lots, zones, entrances, features, rates.
+- **Quotas and availability:** spaces allocated for booking, closures, overlap checks.
+- **Bookings:** booking lifecycle (created → paid → fulfilled / cancelled / no-show).
+- **Payments:** payment, refunds, compensation.
+- **Access:** receiving camera events, checking bookings, sending the open command, manual confirmation.
+- **Statuses and data:** current zone state, source, last update time, staleness rule.
+- **Audit:** entry and exit log, operator manual actions with reasons.
 
-**Направления ML:**
+**ML directions:**
 
-- Распознавание госномеров, если на объекте нет готового решения или его качества недостаточно.
-- Прогноз занятости и вероятности свободных мест по времени.
-- Выявление устаревших и ошибочных статусов.
+- License plate recognition, if the facility has no ready-made solution or its quality isn't good enough.
+- Forecasting occupancy and the likelihood of free spaces by time.
+- Detecting stale and incorrect statuses.
 
-## Бизнес-модель
+## Business model
 
-- **Основной доход:** комиссия с каждой исполненной платной брони по договору с оператором парковки.
-- **Дополнительно:** разовая оплата подключения объекта.
-- **В перспективе:** подписка для организаций на модуль управления парковкой и контроля качества данных.
+- **Main revenue:** a commission on every fulfilled paid booking, under a contract with the parking operator.
+- **Additional:** a one-time facility onboarding fee.
+- **Later:** a subscription for organizations to a parking management and data quality module.
 
-Размер комиссии и тарифы определяются по итогам пилота. Общая сумма парковочных платежей не равна выручке платформы.
+The commission and rates will be set based on pilot results. Total parking payments are not the platform's revenue.
 
-**Основные расходы:** обследование объекта, разработка, интеграция с системой доступа, серверы, карты, связь, поддержка, выезды на объект, обработка платежей, возвраты и компенсации.
+**Main costs:** facility survey, development, access system integration, servers, maps, connectivity, support, on-site visits, payment processing, refunds and compensation.
 
-## Метрики пилота
+## Pilot metrics
 
-| Группа | Метрика |
+| Group | Metric |
 |---|---|
-| Надёжность брони | Доля исполненных бронирований среди водителей, прибывших по условиям брони |
-| Сбои | Случаи «места нет», отказы во въезде, обращения за ручной помощью |
-| Удобство | Время от прибытия к объекту до парковки |
-| Удержание | Повторные оплаченные брони, отмены, неявки |
-| Качество данных | Доля устаревших и ошибочных статусов по контрольной проверке, скорость исправления оператором |
-| Экономика | Доход с брони после переменных затрат, стоимость обслуживания объекта, готовность партнёра продолжать |
+| Booking reliability | Share of fulfilled bookings among drivers who arrived within the booking terms |
+| Failures | "No space" cases, denied entries, requests for manual help |
+| Convenience | Time from arriving at the facility to parking |
+| Retention | Repeat paid bookings, cancellations, no-shows |
+| Data quality | Share of stale and incorrect statuses in spot checks, how fast the operator fixes them |
+| Unit economics | Revenue per booking after variable costs, facility servicing cost, partner's willingness to continue |
 
-## Риски и открытые вопросы
+## Risks and open questions
 
-- **Зависимость от интеграции.** Без доступа к камерам и шлагбауму партнёра въезд по госномеру не работает. Нужно заранее проверить совместимость оборудования.
-- **Конфликт квоты и обычных заездов.** Нужен механизм, который гарантирует свободное место для брони, иначе главное обещание сервиса нарушается.
-- **Персональные данные.** Госномер и история поездок — персональные данные. Нужны согласие пользователя, правила хранения и удаления.
-- **Правила отмен и неявок.** Нужно определить, сколько держится бронь, что происходит при опоздании и кто компенсирует, если места нет.
-- **Платежи.** Выбор платёжного провайдера, удобного для пользователей в Казахстане.
-- **Зима.** Уборка снега и сокращение доступных мест должны быстро отражаться в квоте и статусах.
-- **Устойчивое преимущество.** Пока его нет. Оно строится за счёт договорённостей о квоте, проверенных интеграций и истории успешных броней.
+- **Integration dependency.** Without access to the partner's cameras and barrier, entry by license plate doesn't work. Equipment compatibility must be checked in advance.
+- **Quota vs. regular drive-ins.** We need a mechanism that guarantees a free space for each booking, otherwise the core promise of the service breaks.
+- **Personal data.** License plates and trip history are personal data. We need user consent and rules for storage and deletion.
+- **Cancellation and no-show rules.** We need to define how long a booking is held, what happens when a driver is late, and who pays compensation if there's no space.
+- **Payments.** Choosing a payment provider that works well for users in Kazakhstan.
+- **Winter.** Snow removal and reduced capacity must be reflected in quotas and statuses quickly.
+- **Defensible advantage.** There isn't one yet. It will be built through quota agreements, proven integrations and a track record of fulfilled bookings.
 
-## Дорожная карта
+## Roadmap
 
-1. **Подготовка пилота:** выбор объекта, обследование, договорённость о квоте и доступе к системе въезда.
-2. **MVP:** бронирование, оплата, кабинет оператора, ручное подтверждение въезда.
-3. **Интеграция:** автоматический въезд по госномеру.
-4. **Пилот:** запуск на одном бизнес-центре, сбор метрик.
-5. **По итогам пилота:** фиксация тарифов и комиссии, подключение следующих объектов, развитие ML-модулей.
+1. **Pilot preparation:** choose the facility, survey it, agree on the quota and access to the entry system.
+2. **MVP:** booking, payment, operator dashboard, manual entry confirmation.
+3. **Integration:** automatic entry by license plate.
+4. **Pilot:** launch at one business center, collect metrics.
+5. **After the pilot:** set rates and commission, onboard more facilities, develop the ML modules.
 
-## Команда
+## Team
 
-| Участник | Зона ответственности |
+| Member | Responsibilities |
 |---|---|
-| **Ансар** | Backend, архитектура системы |
-| **Бигали** | Frontend, machine learning |
+| **Ansar** | Backend, system architecture |
+| **Bigali** | Frontend, machine learning |
 
-## Работа с репозиторием
+## Working with the repository
 
-- Перед началом работы подтягиваем актуальные изменения: `git pull`.
-- Каждый работает в своей ветке, изменения в `main` попадают через pull request.
+- Pull the latest changes before starting work: `git pull`.
+- Everyone works in their own branch; changes reach `main` through pull requests.
