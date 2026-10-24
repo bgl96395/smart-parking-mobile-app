@@ -11,6 +11,8 @@ A prototype of a service that lets drivers **book a parking spot near a business
 | 📱 **Mobile app** | Drivers: visitors and employees of business centers | [Open mobile design](https://claude.ai/artifact/U1VYAneJLSWpBs1v4F2A3g) |
 | 💻 **Web dashboard** | Parking operators and business center managers | [Open web design](https://claude.ai/artifact/UBDpRmhQ1FdVo6bXsE5zDJ) |
 
+**Screens** are also shown below as images, so the design can be viewed right here on GitHub.
+
 **How to view:** open a link and press **Play** on a screen to click through it like a real app. Buttons, time selection, the duration counter and payment methods all work.
 
 ---
@@ -20,6 +22,8 @@ A prototype of a service that lets drivers **book a parking spot near a business
 User flow: **Map → Parking details → Booking → Payment → Active booking**
 
 ### 1. Parking map
+
+<img src="screens/01-parking-map.png" alt="Parking map" width="300">
 The driver enters a destination and sees parkings nearby.
 - Search bar and filters: arrival time, covered, heated, height limit.
 - Each parking shows one of four statuses:
@@ -30,22 +34,30 @@ The driver enters a destination and sees parkings nearby.
 - Every status shows **where the data comes from** (camera, sensors) and **when it was updated**.
 
 ### 2. Parking details
+
+<img src="screens/02-parking-details.png" alt="Parking details" width="300">
 Everything the driver needs to know before driving there:
 - How many spots are available **for booking** (the partner's quota).
 - Exact entrance, walking route to the lobby, height limit, covered or heated.
 - Rates and cancellation rules.
 
 ### 3. Booking
+
+<img src="screens/03-booking.png" alt="Booking" width="300">
 - Choose arrival time and duration.
 - Choose the vehicle by license plate. The app checks that the car fits under the height limit.
 - The **full price** is shown before payment and updates instantly.
 - Guarantee: if no spot is available on arrival, the driver gets a full refund plus compensation.
 
 ### 4. Payment
+
+<img src="screens/04-payment.png" alt="Payment" width="300">
 - Payment methods: Kaspi, bank card, or employer's corporate account.
 - The total is final and will not change after payment.
 
 ### 5. Active booking and entry
+
+<img src="screens/05-active-booking.png" alt="Active booking" width="300">
 - A large license plate display and the booking time window.
 - The camera at the barrier recognizes the plate and opens the gate automatically.
 - Step-by-step directions to the spot.
@@ -56,6 +68,8 @@ Everything the driver needs to know before driving there:
 ## 💻 Web dashboard (parking operators)
 
 One screen where the operator controls bookings and access:
+
+<img src="screens/06-operator-dashboard.png" alt="Operator dashboard" width="800">
 - **Key numbers:** booking quota, bookings today, automatic plate entries, cases needing manual help.
 - **Parking zones:** status of each zone, including temporary closures with reason and responsible person.
 - **Upcoming bookings:** plate, time, guest type and status (expected, parked, manual entry, no-show).
