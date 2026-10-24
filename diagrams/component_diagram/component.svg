@@ -1,0 +1,232 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1490" height="1000" viewBox="0 0 1490 1000" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555555"/>
+    </marker>
+  </defs>
+  <rect width="1490" height="1000" fill="#FFFFFF"/>
+  <text x="745.0" y="40" font-size="22" font-weight="bold" font-style="normal" fill="#222222" text-anchor="middle">Component Diagram: Smart Parking</text>
+  <text x="745.0" y="64" font-size="13" font-weight="normal" font-style="normal" fill="#666666" text-anchor="middle">UML · edge device, backend modules and clients from docs/06-architecture/architecture.md, Sections 5 and 12</text>
+  <rect x="40" y="92" width="240" height="68" rx="8" fill="#7A7A7A" stroke="#5E5E5E" stroke-width="1.5"/>
+  <text x="160" y="110" font-size="11" font-weight="normal" font-style="normal" fill="#FFFFFF" text-anchor="middle">«external system»</text>
+  <text x="160" y="130" font-size="15" font-weight="bold" font-style="normal" fill="#FFFFFF" text-anchor="middle">Partner camera</text>
+  <text x="160" y="148" font-size="12" font-weight="normal" font-style="normal" fill="#FFFFFF" text-anchor="middle">existing CCTV camera</text>
+  <polygon points="30,215 42,203 302,203 290,215" fill="#E3E8EF" stroke="#555555" stroke-width="1.3"/>
+  <polygon points="290,215 302,203 302,818 290,830" fill="#E3E8EF" stroke="#555555" stroke-width="1.3"/>
+  <rect x="30" y="215" width="260" height="615" fill="#F7F9FC" stroke="#555555" stroke-width="1.3"/>
+  <text x="160.0" y="238" font-size="12" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">«device»</text>
+  <text x="160.0" y="257" font-size="15" font-weight="bold" font-style="normal" fill="#222222" text-anchor="middle">Edge device (at the site)</text>
+  <text x="160.0" y="274" font-size="11" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">Python, OpenCV, ONNX (proposed)</text>
+  <rect x="45" y="290" width="230" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="257" y="295" width="12" height="14"/>
+    <rect x="254" y="298" width="6" height="3"/>
+    <rect x="254" y="303" width="6" height="3"/>
+  </g>
+  <text x="160.0" y="320" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Frame source</text>
+  <text x="160.0" y="339" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">RTSP or video file, 1 fps</text>
+  <rect x="45" y="380" width="230" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="257" y="385" width="12" height="14"/>
+    <rect x="254" y="388" width="6" height="3"/>
+    <rect x="254" y="393" width="6" height="3"/>
+  </g>
+  <text x="160.0" y="410" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">View checker</text>
+  <text x="160.0" y="429" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">dark, covered or moved camera</text>
+  <rect x="45" y="470" width="230" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="257" y="475" width="12" height="14"/>
+    <rect x="254" y="478" width="6" height="3"/>
+    <rect x="254" y="483" width="6" height="3"/>
+  </g>
+  <text x="160.0" y="500" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Space classifier</text>
+  <text x="160.0" y="519" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">small CNN, one crop per space</text>
+  <rect x="45" y="560" width="230" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="257" y="565" width="12" height="14"/>
+    <rect x="254" y="568" width="6" height="3"/>
+    <rect x="254" y="573" width="6" height="3"/>
+  </g>
+  <text x="160.0" y="590" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Smoother + confidence filter</text>
+  <text x="160.0" y="609" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">3 equal frames, threshold 0.85</text>
+  <rect x="45" y="650" width="230" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="257" y="655" width="12" height="14"/>
+    <rect x="254" y="658" width="6" height="3"/>
+    <rect x="254" y="663" width="6" height="3"/>
+  </g>
+  <text x="160.0" y="680" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Outbox</text>
+  <text x="160.0" y="699" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">SQLite queue until confirmed</text>
+  <rect x="45" y="740" width="230" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="257" y="745" width="12" height="14"/>
+    <rect x="254" y="748" width="6" height="3"/>
+    <rect x="254" y="753" width="6" height="3"/>
+  </g>
+  <text x="160.0" y="770" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Uploader</text>
+  <text x="160.0" y="789" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">batch every 1 s, heartbeat 5 s</text>
+  <polyline points="160,354 160,379" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="160,444 160,469" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="160,534 160,559" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="160,624 160,649" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="160,714 160,739" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polygon points="500,215 512,203 1112,203 1100,215" fill="#E3E8EF" stroke="#555555" stroke-width="1.3"/>
+  <polygon points="1100,215 1112,203 1112,678 1100,690" fill="#E3E8EF" stroke="#555555" stroke-width="1.3"/>
+  <rect x="500" y="215" width="600" height="475" fill="#F7F9FC" stroke="#555555" stroke-width="1.3"/>
+  <text x="800.0" y="238" font-size="12" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">«server»</text>
+  <text x="800.0" y="257" font-size="15" font-weight="bold" font-style="normal" fill="#222222" text-anchor="middle">Backend application (Kazakhstan)</text>
+  <text x="800.0" y="274" font-size="11" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">Python + FastAPI (proposed), modular monolith</text>
+  <rect x="520" y="300" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="662" y="305" width="12" height="14"/>
+    <rect x="659" y="308" width="6" height="3"/>
+    <rect x="659" y="313" width="6" height="3"/>
+  </g>
+  <text x="600.0" y="330" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Reports</text>
+  <text x="600.0" y="349" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">quality report</text>
+  <rect x="720" y="300" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="862" y="305" width="12" height="14"/>
+    <rect x="859" y="308" width="6" height="3"/>
+    <rect x="859" y="313" width="6" height="3"/>
+  </g>
+  <text x="800.0" y="330" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Audit</text>
+  <text x="800.0" y="349" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">append-only log</text>
+  <rect x="920" y="300" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="1062" y="305" width="12" height="14"/>
+    <rect x="1059" y="308" width="6" height="3"/>
+    <rect x="1059" y="313" width="6" height="3"/>
+  </g>
+  <text x="1000.0" y="330" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Auth and access</text>
+  <text x="1000.0" y="349" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">sessions, roles, areas</text>
+  <rect x="520" y="450" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="662" y="455" width="12" height="14"/>
+    <rect x="659" y="458" width="6" height="3"/>
+    <rect x="659" y="463" width="6" height="3"/>
+  </g>
+  <text x="600.0" y="480" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Layout and devices</text>
+  <text x="600.0" y="499" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">areas, spaces, tokens</text>
+  <rect x="720" y="450" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="862" y="455" width="12" height="14"/>
+    <rect x="859" y="458" width="6" height="3"/>
+    <rect x="859" y="463" width="6" height="3"/>
+  </g>
+  <text x="800.0" y="480" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Closures</text>
+  <text x="800.0" y="499" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">reason required</text>
+  <rect x="920" y="450" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="1062" y="455" width="12" height="14"/>
+    <rect x="1059" y="458" width="6" height="3"/>
+    <rect x="1059" y="463" width="6" height="3"/>
+  </g>
+  <text x="1000.0" y="480" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Corrections</text>
+  <text x="1000.0" y="499" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">keeps detected value</text>
+  <rect x="520" y="600" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="662" y="605" width="12" height="14"/>
+    <rect x="659" y="608" width="6" height="3"/>
+    <rect x="659" y="613" width="6" height="3"/>
+  </g>
+  <text x="600.0" y="630" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Ingest</text>
+  <text x="600.0" y="649" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">checks token and time</text>
+  <rect x="720" y="600" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="862" y="605" width="12" height="14"/>
+    <rect x="859" y="608" width="6" height="3"/>
+    <rect x="859" y="613" width="6" height="3"/>
+  </g>
+  <text x="800.0" y="630" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Status engine</text>
+  <text x="800.0" y="649" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">+ freshness sweeper</text>
+  <rect x="920" y="600" width="160" height="64" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="1062" y="605" width="12" height="14"/>
+    <rect x="1059" y="608" width="6" height="3"/>
+    <rect x="1059" y="613" width="6" height="3"/>
+  </g>
+  <text x="1000.0" y="630" font-size="14" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Realtime hub</text>
+  <text x="1000.0" y="649" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">snapshot, then changes</text>
+  <polyline points="680,632 719,632" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="880,632 919,632" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="800,514 800,599" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="800,450 800,365" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="940,514 860,599" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="940,450 860,365" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="660,450 740,365" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <polyline points="920,332 881,332" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <path d="M695,760 V842 A105,12 0 0 0 905,842 V760" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <ellipse cx="800" cy="760" rx="105" ry="12" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <text x="800" y="788" font-size="11" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">«database»</text>
+  <text x="800" y="808" font-size="15" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">PostgreSQL</text>
+  <text x="800" y="826" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">11 tables, audit_log append-only</text>
+  <polyline points="800,690 800,747" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="810" y="730" font-size="12" font-style="normal" font-weight="normal" fill="#333333" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">reads and writes</text>
+  <text x="810" y="746" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[SQL]</text>
+  <rect x="1240" y="290" width="220" height="100" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="1442" y="295" width="12" height="14"/>
+    <rect x="1439" y="298" width="6" height="3"/>
+    <rect x="1439" y="303" width="6" height="3"/>
+  </g>
+  <text x="1350.0" y="310" font-size="11" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">«app»</text>
+  <text x="1350.0" y="330" font-size="15" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Operator web panel</text>
+  <text x="1350.0" y="348" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">React + TypeScript (proposed)</text>
+  <text x="1350.0" y="364" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">operator and admin screens</text>
+  <rect x="1240" y="580" width="220" height="100" rx="3" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.5"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="1442" y="585" width="12" height="14"/>
+    <rect x="1439" y="588" width="6" height="3"/>
+    <rect x="1439" y="593" width="6" height="3"/>
+  </g>
+  <text x="1350.0" y="600" font-size="11" font-weight="normal" font-style="normal" fill="#555555" text-anchor="middle">«app»</text>
+  <text x="1350.0" y="620" font-size="15" font-weight="bold" font-style="normal" fill="#1A1A1A" text-anchor="middle">Driver mobile app</text>
+  <text x="1350.0" y="638" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">React Native or Flutter</text>
+  <text x="1350.0" y="654" font-size="12" font-weight="normal" font-style="normal" fill="#333333" text-anchor="middle">no account, read-only</text>
+  <polyline points="58,160 58,289" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="68" y="182" font-size="12" font-style="normal" font-weight="normal" fill="#333333" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">video stream, read-only</text>
+  <text x="68" y="197" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[RTSP]</text>
+  <polyline points="275,760 315,760 315,482 519,482" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="345" y="472" font-size="12" font-style="normal" font-weight="bold" fill="#333333" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">I2 Device configuration</text>
+  <text x="345" y="499" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[HTTPS GET, device token]</text>
+  <polyline points="275,788 335,788 335,632 519,632" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="345" y="622" font-size="12" font-style="normal" font-weight="bold" fill="#333333" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">I1 Observation ingest</text>
+  <text x="345" y="649" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[HTTPS POST, device token]</text>
+  <polyline points="1240,325 1081,325" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="1160" y="315" font-size="12" font-style="normal" font-weight="bold" fill="#333333" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">I5 Operator API</text>
+  <text x="1160" y="342" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[HTTPS, user token]</text>
+  <polyline points="1080,606 1268,391" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="1190" y="486" font-size="12" font-style="normal" font-weight="bold" fill="#333333" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">I4 Live updates</text>
+  <text x="1190" y="502" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="start" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[WSS, user token]</text>
+  <polyline points="1080,622 1239,622" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="1172" y="612" font-size="12" font-style="normal" font-weight="bold" fill="#333333" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">I4 Live updates [WSS]</text>
+  <polyline points="1240,655 1101,655" fill="none" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="1170" y="674" font-size="12" font-style="normal" font-weight="bold" fill="#333333" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">I3 Public read API</text>
+  <text x="1170" y="690" font-size="12" font-style="italic" font-weight="normal" fill="#666666" text-anchor="middle" stroke="#FFFFFF" stroke-width="4" paint-order="stroke">[HTTPS, no login]</text>
+  <path d="M30,868 H486 L500,882 V930 H30 Z" fill="#FFFBE6" stroke="#B8A44C" stroke-width="1.2"/>
+  <path d="M486,868 V882 H500" fill="none" stroke="#B8A44C" stroke-width="1.2"/>
+  <text x="44" y="893" font-size="12.5" font-weight="normal" font-style="normal" fill="#333333" text-anchor="start">Frames are processed in memory and discarded; only space</text>
+  <text x="44" y="913" font-size="12.5" font-weight="normal" font-style="normal" fill="#333333" text-anchor="start">statuses and timestamps leave the site (FR-21, NFR-05).</text>
+  <path d="M990,868 H1446 L1460,882 V930 H990 Z" fill="#FFFBE6" stroke="#B8A44C" stroke-width="1.2"/>
+  <path d="M1446,868 V882 H1460" fill="none" stroke="#B8A44C" stroke-width="1.2"/>
+  <text x="1004" y="893" font-size="12.5" font-weight="normal" font-style="normal" fill="#333333" text-anchor="start">I5 requests pass Auth and access first, then go to Closures,</text>
+  <text x="1004" y="913" font-size="12.5" font-weight="normal" font-style="normal" fill="#333333" text-anchor="start">Corrections, Audit, Reports or Layout and devices.</text>
+  <g font-size="12" fill="#444444">
+    <rect x="360" y="955" width="30" height="20" rx="2" fill="#E8F1FB" stroke="#1168BD" stroke-width="1.2"/>
+  <g fill="#E8F1FB" stroke="#1168BD" stroke-width="1">
+    <rect x="372" y="957" width="12" height="14"/>
+    <rect x="369" y="960" width="6" height="3"/>
+    <rect x="369" y="965" width="6" height="3"/>
+  </g>
+    <text x="398" y="970">Component</text>
+    <rect x="500" y="955" width="26" height="18" fill="#F7F9FC" stroke="#555555"/>
+    <polygon points="500,955 506,949 532,949 526,955" fill="#E3E8EF" stroke="#555555"/>
+    <polygon points="526,955 532,949 532,967 526,973" fill="#E3E8EF" stroke="#555555"/>
+    <text x="540" y="970">Node (device or server)</text>
+    <rect x="700" y="955" width="26" height="18" rx="3" fill="#7A7A7A"/>
+    <text x="734" y="970">External system</text>
+    <line x1="850" y1="965" x2="895" y2="965" stroke="#555555" stroke-width="1.5" marker-end="url(#arr)"/>
+    <text x="903" y="970">Calls or sends data to</text>
+  </g>
+</svg>
