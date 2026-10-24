@@ -26,31 +26,25 @@ Five systems were chosen to cover different approaches: a general map service, a
 
 ## 4. Comparison Table
 
-| Criterion | 2GIS / Yandex Maps | UIMS Parking | Car ID / AI Parking | Parquery | Parkopedia |
+| Criterion | UIMS Parking (Astana) | Car ID / AI Parking (KZ) | ParkWS (KZ) | Parquery (intl.) | Parkopedia (intl.) |
 |---|---|---|---|---|---|
-| 1. Real-time availability | [verify] | Described as showing free spaces on a map **(vendor claim, app description)**; coverage and freshness not verified | [verify] | Vendor claim: occupancy from existing cameras **(vendor claim)** | Vendor claim: combines current data with prediction models **(vendor claim)** |
-| 2. Freshness indication | [verify] | [verify] | [verify] | [verify] | [verify] |
-| 3. Unknown-state handling | [verify] | [verify] | [verify] | [verify] | [verify] |
-| 4. Advance reservation | [verify] | [verify] | Not confirmed in research **[verify]** | Not confirmed **[verify]** | Not confirmed **[verify]** |
-| 5. Price before arrival | [verify] | [verify] | [verify] | [verify] | [verify] |
-| 6. Camera-based detection | No (map data) **[verify]** | [verify] | Plate recognition at entry **(vendor claim)** | Yes **(vendor claim)** | [verify] |
-| 7. Operator control | Not applicable to user-facing map **[verify]** | [verify] | Operator panel mentioned **(vendor claim)** | [verify] | [verify] |
-| 8. Presence in Astana | Yes, as map services **[verify]** | Yes, launched September 2026 **(official announcement)** | Kazakhstan-based **(vendor claim)** | Not confirmed for Astana **[verify]** | Not confirmed **[verify]** |
+| 1. Real-time availability | Map app shows the number of free spaces (app description) | Not stated | Not stated | Occupancy detected from existing cameras (vendor claim) | Current data combined with prediction models (vendor claim) |
+| 2. Data freshness shown | Not stated | Not stated | Not stated | Not stated | Not stated |
+| 3. Unknown-state handling | Not stated | Not stated | Not stated | Not stated | Not stated |
+| 4. Advance reservation | Not stated (sessions, subscriptions, permits) | Not stated | Not stated | Not stated | Not stated (forecasting described) |
+| 5. Price before arrival | Not stated (payment sessions) | Not stated (QR payment: Kaspi, Halyk) | Not stated (QR payment) | Not stated | Not stated |
+| 6. Camera-based detection | Not stated | Yes, license plate recognition at entry | Yes, license plate recognition | Yes, occupancy from cameras | Not stated |
+| 7. Operator control | Not stated | Guest access, load and revenue reports, API integrations | Access lists, event log, local controller | Dashboards and API | Not applicable (data provider) |
+| 8. Presence in Astana | Yes, launched 14 September 2026 | Kazakhstani platform; Astana not stated | Not stated | Not stated | Not stated |
 
-**How to fill the [verify] cells:** open each app or site, test it on at least three days at different times, and record one of: "yes, shown", "no", "not shown", with a screenshot. Save screenshots in `docs/04-systems_comparison/screenshots/` only if they contain no personal data.
+**Sources:** UIMS Parking app description and official announcement; Car ID / AI Parking and ParkWS vendor websites; Parquery and Parkopedia product materials. All vendor claims are unverified.
 
-## 5. Observations from the Comparison
-[Fill in after testing. Examples of what to look for:]
-- Whether any system shows a timestamp with its availability data.
-- Whether any system shows "unknown" when it has no current data, or instead shows the last known value.
-- Whether availability in the city app is accurate compared with what you observe on site.
+## 5. Gap
+Based on the published descriptions of the reviewed systems, none of them clearly states how current its availability information is, or what it shows when the data is missing. The vendor materials describe free-space information but do not mention data freshness or an "unknown" status.
 
-## 6. Gap
-[Write this section only after completing the table. Do not claim a gap that the tests do not confirm.]
+This observation is based on public descriptions only and has not been verified by direct testing. It is the basis for the proposed system, which treats data freshness and unknown states as core features.
 
-Current draft hypothesis: no system in the comparison clearly shows the reliability of its availability information, including when the data is unknown. This hypothesis must be tested. If the city app or 2GIS already shows freshness and unknown states, the gap must be restated or dropped.
-
-## 7. Limitations
+## 6. Limitations
 - Vendor claims were not independently verified unless stated.
 - Availability data changes over time; the test dates must be recorded.
 - Local solutions (such as ParkWS and P360) are not in the main table and can be added if tested.
