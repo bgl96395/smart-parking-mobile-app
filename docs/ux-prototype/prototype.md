@@ -1,204 +1,184 @@
-# Smart Parking System — Design Prototype
+# Smart Parking System — Prototype Screens
 
-A prototype of a service that lets drivers **book a parking spot near a business center in Astana in advance** and **enter by license plate recognition**, with the full price and conditions shown before payment.
-
-> The project name is temporary and will be changed later. Names, prices and numbers in the design are sample data for the prototype.
-
-## Design links
-
-| Platform | Who uses it | Link |
-|---|---|---|
-| 📱 **Mobile app** | Drivers: visitors and employees of business centers | [Open mobile design](https://claude.ai/artifact/U1VYAneJLSWpBs1v4F2A3g) |
-| 💻 **Web dashboard** | Parking operators and business center managers | [Open web design](https://claude.ai/artifact/UBDpRmhQ1FdVo6bXsE5zDJ) |
-
-All screens are also shown below, so the design can be reviewed right here on GitHub.
-
-## Contents
-
-- [User flow](#user-flow)
-- [Mobile app (drivers)](#-mobile-app-drivers)
-  - [1. Parking map](#1-parking-map)
-  - [2. Parking details](#2-parking-details)
-  - [3. Booking](#3-booking)
-  - [4. Payment](#4-payment)
-  - [5. My booking and entry](#5-my-booking-and-entry)
-- [Web dashboard (parking operators)](#-web-dashboard-parking-operators)
-- [Parking statuses used across the design](#parking-statuses-used-across-the-design)
-- [How we differ from existing solutions](#how-we-differ-from-existing-solutions)
-
----
-
-## User flow
-
-```
-Parking map → Parking details → Booking → Payment → My booking → Entry by plate
-                                                                    │
-                                                    camera fails ───┴──→ Operator confirms entry manually
-```
-
-The driver goes from searching for parking to driving through the barrier in five screens. The operator sees every booking and steps in only when automatic entry fails.
-
----
-
-## 📱 Mobile app (drivers)
-
-### 1. Parking map
+## Screen 1. Parking map
 
 <img src="screens/01-parking-map.png" alt="Parking map" width="300">
 
-**Purpose:** show the driver which parkings near their destination they can use, and how reliable that information is.
+This is the first screen the driver sees. It shows parkings near the place they are going to.
 
-**What is on the screen:**
+At the top is the search bar with the destination: **Orken Tower BC, Mangilik El Ave**. The destination is marked on the map with a star.
 
-- **Search bar** at the top with the destination: *Orken Tower BC, Mangilik El Ave*. The destination is marked on the map with a star.
-- **Filters** under the search bar:
-  - **Today 2:00 PM**: planned arrival time. Availability is calculated for this time, not just for "now".
-  - **Covered**, **Heated**: important in Astana's winter.
-  - **Height 2 m+**: for vans and tall cars.
-- **Map pins** with the status of each parking:
-  - 🟢 **8 to book**: the number of spots still available from the partner's booking quota.
-  - 🔴 **Full**: no free spots.
-  - ⚫ **Closed**: temporarily closed by the operator.
-  - 🟠 **Unknown** (dashed outline, "?"): no fresh data.
-- **"Near your destination"** bottom sheet with a list of 3 parkings. Each card shows:
-  - name, price per hour (**400 ₸/h**, **300 ₸/h**, **500 ₸/h**);
-  - type and walking distance: *Underground · heated · 90 m to entrance*;
-  - status badge plus **data source and age**: *camera · 2 min ago*, *sensors · 5 min ago*, *no data for 1 h*.
-- **Bottom navigation:** Map, My bookings, Profile.
+Under the search bar are filters:
+- **Today 2:00 PM**: the time the driver plans to arrive. Availability is shown for this time, not only for "now".
+- **Covered** and **Heated**: important in winter.
+- **Height 2 m+**: for tall cars and vans.
 
-**Key design decision:** a parking with stale data is shown as **"Occupancy unknown"**, not as free. The driver always sees where the status came from and how old it is, so they can decide whether to trust it.
+The map shows a pin for each parking with its status:
+- **8 to book** (green): 8 spots are still available for booking.
+- **Full** (red): no free spots.
+- **Closed** (dark gray): the operator has temporarily closed the parking.
+- **Unknown** (orange, dashed outline, "?"): there is no fresh data, so the app does not guess.
+
+At the bottom is the **"Near your destination"** panel with 3 parkings. Each card shows:
+- the name and the price per hour;
+- the type of parking and the walking distance to the entrance;
+- the status and where the data came from, with its age.
+
+| Parking | Price | Details | Status |
+|---|---|---|---|
+| Orken Tower BC Parking | 400 ₸/h | Underground · heated · 90 m to entrance | Spots available · camera · 2 min ago |
+| Open lot, Syganak St | 300 ₸/h | Outdoor · 240 m to entrance | Full · sensors · 5 min ago |
+| Mall parking, Turan Ave | 500 ₸/h | Covered · 420 m to entrance | Occupancy unknown · no data for 1 h |
+
+At the very bottom is the navigation bar: **Map**, **My bookings**, **Profile**.
+
+**Why it is designed this way:** the driver always sees not only the status but also its source and age. If the data is old, the app says **"unknown"** instead of showing an old value as current.
 
 ---
 
-### 2. Parking details
+## Screen 2. Parking details
 
 <img src="screens/02-parking-details.png" alt="Parking details" width="300">
 
-**Purpose:** give the driver everything they need to know **before** driving there, so there are no surprises at the entrance.
+The driver taps a parking on the map and opens this screen. It answers every question the driver may have **before** driving there.
 
-**What is on the screen:**
+At the top is a schematic image of the parking level with the **Partner parking** label and the spot marker **B-14**.
 
-- **Header** with a schematic view of the parking level, the *Partner parking* label and the spot marker **B-14**.
-- **Name and location:** *Orken Tower BC Parking · Mangilik El Ave · underground, level −1*.
-- **Availability block** (green):
-  - **Spots available · 8 of 20 for booking**, with a progress bar;
-  - source and freshness: *Source: entry camera · updated 2 min ago*;
-  - *5 bookings already confirmed for 2:00 PM*. Confirmed future bookings are shown separately from current occupancy.
-- **Four facility cards:**
-  - **Height 2.1 m**: entry limit;
-  - **Covered, warm**: heated in winter;
-  - **Entry from Syganak St**: barrier with camera, i.e. the exact entrance the driver needs;
-  - **Lift to lobby**: 90 m to the business center entrance.
-- **Rates:**
-  - weekdays 8 AM–8 PM: **400 ₸ / hour**;
-  - evenings and weekends: **250 ₸ / hour**;
-  - cancellation: **free up to 30 min before**.
-- **Bottom bar:** *from 400 ₸/h* and the main button **Book a spot**.
+Below is the name and location: **Orken Tower BC Parking**, Mangilik El Ave, underground, level −1.
 
-**Key design decision:** the screen answers the driver's usual questions in advance: will my car fit, which entrance, how far to the lobby, how much it costs, and how to cancel.
+The green block shows availability:
+- **Spots available · 8 of 20 for booking**, with a progress bar.
+- **Source: entry camera · updated 2 min ago**.
+- **5 bookings already confirmed for 2:00 PM**. Future bookings are shown separately from current occupancy.
+
+Four cards describe the parking:
+- **Height 2.1 m**: the entry limit, so the driver knows if the car will fit.
+- **Covered, warm**: heated in winter.
+- **Entry from Syganak St**: the exact entrance, a barrier with a camera.
+- **Lift to lobby**: 90 m to the business center entrance.
+
+The **Rates** section:
+
+| | |
+|---|---|
+| Weekdays 8 AM–8 PM | 400 ₸ / hour |
+| Evenings and weekends | 250 ₸ / hour |
+| Cancellation | free up to 30 min before |
+
+At the bottom are the starting price **from 400 ₸/h** and the main button **Book a spot**.
+
+**Why it is designed this way:** the driver learns in advance whether the car fits, which entrance to use, how far the lobby is, how much it costs and how to cancel. There are no surprises on arrival.
 
 ---
 
-### 3. Booking
+## Screen 3. Booking
 
 <img src="screens/03-booking.png" alt="Booking" width="300">
 
-**Purpose:** choose time and vehicle, and see the **final price** before paying.
+After **Book a spot**, the driver chooses the time and the car.
 
-**What is on the screen:**
+**Arrival time · today:** four quick slots: **1:30**, **2:00** (selected), **2:30**, **3:00**.
 
-- **Arrival time · today:** quick slots **1:30**, **2:00** (selected), **2:30**, **3:00**.
-- **Duration:** a counter with **−** and **+**, currently **2 h**, with the end time shown: *until 4:00 PM*.
-- **Vehicle:** a card with a Kazakhstani license plate **777 ABA 01** (KZ flag strip) and *Toyota Camry · height 1.45 m · fits*. The app checks the car's height against the parking's height limit.
-- **Price breakdown:**
-  - Parking 2 h × 400 ₸: **800 ₸**
-  - Service fee: **100 ₸**
-  - **Total: 900 ₸**
-- **Guarantee note** (green shield): *Your spot is guaranteed from the partner's quota. If no spot is available, you get a full refund plus compensation. Free cancellation until 1:30 PM.*
-- **Button:** **Continue to payment · 900 ₸**.
+**Duration:** a counter with **−** and **+** buttons. **2 h** is selected now, and the end time is shown: **until 4:00 PM**.
 
-**Key design decision:** the price updates instantly when the time or duration changes, and the service fee is shown as a separate line. There are no hidden costs.
+**Vehicle:** a card with the Kazakhstani license plate **777 ABA 01** and the car **Toyota Camry, height 1.45 m · fits**. The app checks the car's height against the parking's height limit.
+
+**Price breakdown:**
+
+| | |
+|---|---|
+| Parking 2 h × 400 ₸ | 800 ₸ |
+| Service fee | 100 ₸ |
+| **Total** | **900 ₸** |
+
+Under the price is a guarantee with a green shield icon: *the spot is guaranteed from the partner's quota; if no spot is available, the driver gets a full refund plus compensation; free cancellation until 1:30 PM.*
+
+At the bottom is the button **Continue to payment · 900 ₸**.
+
+**Why it is designed this way:** the price changes instantly when the time or duration changes, and the service fee is shown as a separate line. The driver sees the final amount before paying, with no hidden costs.
 
 ---
 
-### 4. Payment
+## Screen 4. Payment
 
 <img src="screens/04-payment.png" alt="Payment" width="300">
 
-**Purpose:** pay with a method that people in Kazakhstan actually use.
+The driver chooses how to pay.
 
-**What is on the screen:**
+At the top is a dark booking summary card: **Orken Tower BC Parking**, the **Booking** badge, **Today, 2:00–4:00 PM**, plate **777 ABA 01 · 2 h**, total **900 ₸**.
 
-- **Booking summary card** (dark): *Orken Tower BC Parking*, **Booking** badge, **Today, 2:00–4:00 PM**, plate *777 ABA 01 · 2 h*, total **900 ₸**.
-- **Payment method:**
-  - **Kaspi**: pay in the Kaspi.kz app (selected by default as the most popular local method);
-  - **Card •• 4821**: saved bank card;
-  - **Employer account**: corporate payment, *corporate limit: 15 000 ₸*. This is for business center employees whose company pays for parking.
-- **Note:** *The total will not change after payment. The receipt goes to your email and to "My bookings".*
-- **Button:** **Pay 900 ₸**.
+**Payment method**, three options:
+- **Kaspi**: pay in the Kaspi.kz app. It is selected by default as the most popular payment method in Kazakhstan.
+- **Card •• 4821**: a saved bank card.
+- **Employer account**: corporate payment with a limit of **15 000 ₸**. This is for business center employees whose company pays for their parking.
 
-**Key design decision:** the corporate account option targets the main early adopters: employees of tenant companies in the business center.
+Below is a note: *the total will not change after payment; the receipt goes to email and to "My bookings".*
+
+At the bottom is the button **Pay 900 ₸**.
+
+**Why it is designed this way:** local payment methods are used, and the corporate account is aimed at the main users of the pilot, employees of companies in the business center.
 
 ---
 
-### 5. My booking and entry
+## Screen 5. My booking
 
 <img src="screens/05-active-booking.png" alt="My booking" width="300">
 
-**Purpose:** get the driver from the street to the parking spot without stopping at the barrier.
+After payment, the driver sees the active booking. This screen takes them from the street to the parking spot.
 
-**What is on the screen:**
+At the top is the green **Booking confirmed** badge.
 
-- **Booking confirmed** badge.
-- **Large license plate** **777 ABA 01**: the plate the camera will look for.
-- **Instruction:** *Drive up to the barrier — the camera will recognize your plate and open the gate automatically.*
-- **Three info tiles:**
-  - **Entry from 1:45 PM**: the driver can enter 15 minutes before the booking starts;
-  - **Booking 2:00–4:00**;
-  - **Zone B · −1**.
-- **How to get to your spot**, step by step:
-  1. Enter from Syganak St, right lane. Height limit 2.1 m.
-  2. Level −1, zone B: spots marked "Reserved".
-  3. Lift B goes straight to the business center lobby.
-- **Two actions at the bottom:**
-  - **Barrier didn't open?**: backup entry. It shows a booking code and a button to call the operator, who confirms entry manually. The event is logged as a "manual entry".
-  - **Cancel booking**: under the cancellation rules from the details screen.
+In the center is a large license plate, **777 ABA 01**. This is the plate the camera at the barrier will look for. Under it is the instruction: *drive up to the barrier, the camera will recognize your plate and open the gate automatically.*
 
-**Key design decision:** automatic entry by plate is the main path, but there is always a backup. A failed camera never leaves the driver stuck at the barrier.
+Three tiles show the key details:
+- **Entry from 1:45 PM**: the driver can enter 15 minutes before the booking starts.
+- **Booking 2:00–4:00**.
+- **Zone B · −1**.
+
+The **How to get to your spot** section gives step-by-step directions:
+1. Enter from Syganak St, right lane. Height limit 2.1 m.
+2. Level −1, zone B: spots marked "Reserved".
+3. Lift B goes straight to the business center lobby.
+
+At the bottom are two buttons:
+- **Barrier didn't open?**: a backup entry. It shows a booking code and a button to call the operator. The operator confirms entry manually, and this is saved as a "manual entry".
+- **Cancel booking**: cancels the booking under the parking's cancellation rules.
+
+**Why it is designed this way:** the main way in is automatic, by license plate. If the camera fails, the driver still has a way in through the operator and does not get stuck at the barrier.
 
 ---
 
-## 💻 Web dashboard (parking operators)
+## Screen 6. Operator dashboard
 
 <img src="screens/06-operator-dashboard.png" alt="Operator dashboard" width="800">
 
-**Purpose:** one screen where the operator of the partner business center controls the booking quota, zones, bookings and entry problems.
+This is the web dashboard for the parking operator of the partner business center. On one screen the operator sees the quota, the zones, the bookings and the entry problems.
 
-**Navigation (left sidebar):** Overview, Bookings, Quota and rates, Zone closures, Entry log, Reports.
+**Left menu:** Overview, Bookings, Quota and rates, Zone closures, Entry log, Reports.
 
-**Header:** *Orken Tower BC Parking*, *Today, October 24 · camera data updated 1 min ago*, and the main action **+ Temporary closure**.
+**Header:** **Orken Tower BC Parking**, *Today, October 24 · camera data updated 1 min ago*. On the right is the main button **+ Temporary closure** for closing a zone because of snow, repairs or a failure.
 
-**Key numbers (4 cards):**
+**Four cards with key numbers:**
 
-| Card | Value | Meaning |
+| Card | Value | What it means |
 |---|---|---|
-| Booking quota | **20 spots**, free now: 8 | How many spots the partner gave for booking, and how many of them are free |
-| Bookings today | **34**, fulfilled 21 · cancelled 3 | Daily booking volume and outcome |
-| Plate-based entry | **20 of 21**, automatic | How many entries went through the camera without help |
-| Manual help | **1**, plate not recognized | Highlighted in yellow: cases that need the operator's attention |
+| Booking quota | 20 spots, free now: 8 | How many spots the partner gave for booking, and how many are free now |
+| Bookings today | 34: fulfilled 21, cancelled 3 | How many bookings there were today and how they ended |
+| Plate-based entry | 20 of 21, automatic | How many cars entered through the camera without help |
+| Manual help | 1, plate not recognized | Highlighted in yellow: a case that needs the operator |
 
-**Parking zones:**
+**Parking zones** block:
 
 | Zone | Details | Status |
 |---|---|---|
-| Zone A · −1 | tenants · 60 spots | 🟢 Available |
-| Zone B · −1 (booking) | booking quota · 20 spots | 🟢 Available |
-| Ground level, yard | snow removal until 12:00 PM · Aigerim S. | ⚫ Closed |
-| Zone C · −2 | camera offline for 40 min | 🟠 Unknown |
+| Zone A · −1 | tenants · 60 spots | Available |
+| Zone B · −1 (booking) | booking quota · 20 spots | Available |
+| Ground level, yard | snow removal until 12:00 PM · Aigerim S. | Closed |
+| Zone C · −2 | camera offline for 40 min | Unknown |
 
-A closed zone always shows the **reason** and the **responsible person**. A zone without camera data is shown as **Unknown** with the reason, never as free.
+A closed zone always shows the reason and the responsible person. A zone without camera data is shown as **Unknown**, not as free.
 
-**Upcoming bookings:**
+**Upcoming bookings** block:
 
 | Plate | Time | Guest | Status |
 |---|---|---|---|
@@ -207,32 +187,6 @@ A closed zone always shows the **reason** and the **responsible person**. A zone
 | 482 BCD 02 | 1:00–2:00 PM | Courier | Manual entry |
 | 309 MNA 01 | 12:00–1:00 PM | Visitor | No-show |
 
-**Manual correction** (bottom block): the operator enters a **license plate**, chooses an **action** (for example, *Open barrier*), and must fill in the **reason** (for example, *Dirty plate, camera could not read it*). The **Apply and log** button saves the action to the entry log. Without a reason, the action cannot be applied.
+**Manual correction** block at the bottom: the operator enters a **license plate** (482 BCD 02), chooses an **action** (Open barrier) and writes a **reason** (Dirty plate, camera could not read it). The reason is required. The **Apply and log** button performs the action and saves it to the entry log.
 
-**Key design decision:** every manual action has a required reason and is written to the log. This keeps the operator accountable and gives data for the pilot metrics (share of manual entries, camera failures).
-
----
-
-## Parking statuses used across the design
-
-The same four statuses are used in the mobile app and the dashboard:
-
-| Status | Look | Meaning |
-|---|---|---|
-| Spots available | Green | Current data shows free spots |
-| Full | Red | Current data shows no free spots |
-| Closed | Dark gray | The operator closed the parking or zone (snow, repairs, failure) |
-| Unknown | Orange, dashed outline, "?" | No data, or the data is stale |
-
-Each status is shown with its **source** (camera, sensors, operator) and **last update time**. Statuses differ not only by color but also by icon and outline, so they can be told apart by people with color vision deficiency.
-
----
-
-## How we differ from existing solutions
-
-Existing apps (for example, Parqour) focus on "drive in → pay at exit". Our focus is:
-
-1. **Booking in advance** with a guaranteed spot from the partner's quota.
-2. **Honest data**: we show the source and update time, and say "unknown" when there is no data.
-3. **Backup entry** through the operator if the camera or barrier fails.
-4. **Local payment**: Kaspi and corporate accounts.
+**Why it is designed this way:** the operator steps in only when automation fails, and every manual action is saved with its reason. This makes the operator's work traceable and gives data for the pilot: how often the camera fails and how many entries needed help.
