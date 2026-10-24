@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="970" viewBox="0 0 1100 970" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555555"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="970" fill="#FFFFFF"/>
+
+  <text x="550" y="40" text-anchor="middle" font-size="22" font-weight="bold" fill="#222222">System Context Diagram: Smart Parking</text>
+  <text x="550" y="64" text-anchor="middle" font-size="13" fill="#666666">C4 level 1 · pilot scope: one parking area (15–30 spaces) of one business center in Astana</text>
+
+  <!-- People -->
+  <g text-anchor="middle" fill="#FFFFFF">
+    <circle cx="230" cy="110" r="26" fill="#08427B" stroke="#073B6F" stroke-width="1.5"/>
+    <rect x="110" y="130" width="240" height="110" rx="20" fill="#08427B" stroke="#073B6F" stroke-width="1.5"/>
+    <text x="230" y="163" font-size="17" font-weight="bold">Driver</text>
+    <text x="230" y="182" font-size="12">[Person]</text>
+    <text x="230" y="206" font-size="13">Visitor or employee of the</text>
+    <text x="230" y="224" font-size="13">business center</text>
+
+    <circle cx="550" cy="110" r="26" fill="#08427B" stroke="#073B6F" stroke-width="1.5"/>
+    <rect x="430" y="130" width="240" height="110" rx="20" fill="#08427B" stroke="#073B6F" stroke-width="1.5"/>
+    <text x="550" y="163" font-size="17" font-weight="bold">Parking operator</text>
+    <text x="550" y="182" font-size="12">[Person]</text>
+    <text x="550" y="206" font-size="13">Representative of the</text>
+    <text x="550" y="224" font-size="13">partner business center</text>
+
+    <circle cx="870" cy="110" r="26" fill="#08427B" stroke="#073B6F" stroke-width="1.5"/>
+    <rect x="750" y="130" width="240" height="110" rx="20" fill="#08427B" stroke="#073B6F" stroke-width="1.5"/>
+    <text x="870" y="163" font-size="17" font-weight="bold">Administrator</text>
+    <text x="870" y="182" font-size="12">[Person]</text>
+    <text x="870" y="206" font-size="13">Project team member who</text>
+    <text x="870" y="224" font-size="13">sets up the system</text>
+  </g>
+
+  <!-- The system -->
+  <g text-anchor="middle" fill="#FFFFFF">
+    <rect x="150" y="390" width="800" height="150" rx="10" fill="#1168BD" stroke="#0B4884" stroke-width="1.5"/>
+    <text x="550" y="432" font-size="22" font-weight="bold">Smart Parking system</text>
+    <text x="550" y="455" font-size="13">[Software system]</text>
+    <text x="550" y="482" font-size="14">Shows the state of each parking space with its</text>
+    <text x="550" y="501" font-size="14">source and freshness, and lets the operator</text>
+    <text x="550" y="520" font-size="14">manage closures and corrections</text>
+  </g>
+
+  <!-- External systems -->
+  <g text-anchor="middle" fill="#FFFFFF">
+    <rect x="210" y="690" width="280" height="110" rx="10" fill="#7A7A7A" stroke="#5E5E5E" stroke-width="1.5"/>
+    <text x="350" y="722" font-size="17" font-weight="bold">Partner camera</text>
+    <text x="350" y="741" font-size="12">[External system]</text>
+    <text x="350" y="765" font-size="13">Existing CCTV camera with a</text>
+    <text x="350" y="783" font-size="13">view of the parking spaces</text>
+
+    <rect x="610" y="690" width="280" height="110" rx="10" fill="#7A7A7A" stroke="#5E5E5E" stroke-width="1.5"/>
+    <text x="750" y="722" font-size="17" font-weight="bold">Time server (NTP)</text>
+    <text x="750" y="741" font-size="12">[External system]</text>
+    <text x="750" y="765" font-size="13">Provides reference time</text>
+    <text x="750" y="783" font-size="13">for freshness checks</text>
+  </g>
+
+  <!-- Relationships -->
+  <g stroke="#555555" stroke-width="1.6" fill="none" marker-end="url(#arrow)">
+    <line x1="230" y1="240" x2="230" y2="388"/>
+    <line x1="550" y1="240" x2="550" y2="388"/>
+    <line x1="870" y1="240" x2="870" y2="388"/>
+    <line x1="350" y1="690" x2="350" y2="542"/>
+    <line x1="750" y1="540" x2="750" y2="688"/>
+  </g>
+
+  <g font-size="12" fill="#333333">
+    <text x="242" y="294">Views space states and</text>
+    <text x="242" y="310">last observation time</text>
+    <text x="242" y="328" fill="#666666" font-style="italic">[Mobile app, HTTPS / WSS]</text>
+
+    <text x="562" y="294">Closes spaces, corrects states,</text>
+    <text x="562" y="310">views audit log and report</text>
+    <text x="562" y="328" fill="#666666" font-style="italic">[Web panel, HTTPS / WSS]</text>
+
+    <text x="882" y="294">Configures layout,</text>
+    <text x="882" y="310">operators and devices</text>
+    <text x="882" y="328" fill="#666666" font-style="italic">[Web panel, HTTPS]</text>
+
+    <text x="362" y="598">Video stream, read-only;</text>
+    <text x="362" y="614">frames are never stored</text>
+    <text x="362" y="632" fill="#666666" font-style="italic">[RTSP]</text>
+
+    <text x="762" y="598">Synchronizes clocks of</text>
+    <text x="762" y="614">server and edge device</text>
+    <text x="762" y="632" fill="#666666" font-style="italic">[NTP]</text>
+  </g>
+
+  <!-- Out of scope -->
+  <rect x="110" y="835" width="880" height="62" rx="8" fill="#FAFAFA" stroke="#AAAAAA" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="550" y="860" text-anchor="middle" font-size="13" font-weight="bold" fill="#555555">Outside the system on purpose (proposal, Section 8)</text>
+  <text x="550" y="882" text-anchor="middle" font-size="12" fill="#666666">Payment providers · barriers and access control · license plate recognition · map services · push notification services</text>
+
+  <!-- Legend -->
+  <g font-size="12" fill="#444444">
+    <rect x="300" y="922" width="16" height="16" rx="3" fill="#08427B"/>
+    <text x="322" y="935">Person</text>
+    <rect x="410" y="922" width="16" height="16" rx="3" fill="#1168BD"/>
+    <text x="432" y="935">System in scope</text>
+    <rect x="565" y="922" width="16" height="16" rx="3" fill="#7A7A7A"/>
+    <text x="587" y="935">External system</text>
+    <line x1="715" y1="930" x2="760" y2="930" stroke="#555555" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <text x="768" y="935">Uses / sends data</text>
+  </g>
+</svg>
