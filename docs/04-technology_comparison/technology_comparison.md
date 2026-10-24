@@ -90,4 +90,4 @@ This document compares the alternatives for the key technical decisions of the p
 - Per-space accuracy may drop under snow; fallback is object detection (Option B in Decision 1).
 - Camera permissions and fixed position must be agreed with the partner before development.
 - Server location must be confirmed against Kazakhstani personal-data rules with the supervisor.
-- The baseline and CNN comparison depends on enough labeled local images, which must be collected during the pilot.
+- The baseline and CNN comparison depends on enough labeled local images, which must be collected during the pilot
